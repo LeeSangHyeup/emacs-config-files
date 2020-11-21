@@ -21,6 +21,12 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 150 :width normal)))))
 
+;;remove scratch message
+(setq initial-scratch-message nil)
+
+;;to solving copy&paste ploblem.
+(delete-selection-mode)
+
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
@@ -28,10 +34,25 @@
 (package-initialize)
 (elpy-enable)
 
-;; (add-hook 'elpy-mode-hook (lambda ()
-;;                             (add-hook 'before-save-hook
-;;                                       'elpy-format-code nil t)))
-
 (add-hook 'elpy-mode-hook (lambda ()
                             (add-hook 'before-save-hook
                                       'elpy-black-fix-code nil t)))
+
+;; set hideshow for programming
+(load-library "hideshow")
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'c++-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+;(add-hook 'java-mode-hook 'hs-minor-mode)
+;(add-hook 'perl-mode-hook 'hs-minor-mode)
+(add-hook 'lisp-mode-hook 'hs-minor-mode)
+(add-hook 'python-mode-hook 'hs-minor-mode)
+
+(defun mouse-set-point-hs-toggle-hiding ()
+  (interactive)
+  (call-interactively 'mouse-set-point)
+  (call-interactively 'hs-toggle-hiding))
+
+;; set global key for hideshow
+(global-unset-key [double-mouse-3])
+(global-set-key [mouse-3]  'mouse-set-point-hs-toggle-hiding)
