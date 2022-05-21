@@ -1,0 +1,1 @@
+sudo apt install elpa-neotree elpa-elpy elpa-flycheck python3-jedi black python3-autopep8 yapf3 python3-yapf 
