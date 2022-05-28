@@ -34,6 +34,10 @@
 ;;remove scratch message
 (setq initial-scratch-message nil)
 
+;;turnoff annoying beep sound
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
+
 ;;to solving copy&paste ploblem.
 (delete-selection-mode)
 
