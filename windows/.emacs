@@ -7,7 +7,9 @@
 ;;set default font size
 (set-face-attribute 'default nil :height 160)
 
-
+;;turnoff annoying beep sound
+(setq visible-bell t)
+(setq ring-bell-function 'ignore)
 
 ;set utf-8 for using korean
 ;(setq-default buffer-file-coding-system 'utf-8-unix)
